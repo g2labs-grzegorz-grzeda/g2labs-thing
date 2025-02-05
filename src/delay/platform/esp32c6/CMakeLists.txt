@@ -20,10 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-add_subdirectory(entry)
-add_subdirectory(addresable-led)
-add_subdirectory(delay)
-
 target_sources(${PROJECT_NAME}
-    PRIVATE main.c
+    PRIVATE g2l-delay.esp32c6.c
+)
+
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE idf::freertos
 )
