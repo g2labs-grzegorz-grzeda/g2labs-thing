@@ -20,14 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-cmake_minimum_required(VERSION 3.31)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-include("cmake/init.cmake")
-
-project(g2labs-thing)
-g2l_thing_init()
-
-add_executable(${PROJECT_NAME})
-g2l_thing_build_executable(${PROJECT_NAME})
-
-add_subdirectory(src)
+target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/entry.${G2L_PLATFORM}.c)

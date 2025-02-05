@@ -20,14 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-cmake_minimum_required(VERSION 3.31)
+# Nothing to do here
 
-include("cmake/init.cmake")
-
-project(g2labs-thing)
-g2l_thing_init()
-
-add_executable(${PROJECT_NAME})
-g2l_thing_build_executable(${PROJECT_NAME})
-
-add_subdirectory(src)
+function(g2l_thing_platform_build_executable executable)
+endfunction()

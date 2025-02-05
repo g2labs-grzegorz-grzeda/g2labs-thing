@@ -1,0 +1,51 @@
+{
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 31,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "linux",
+            "displayName": "Linux",
+            "description": "Configure for Linux",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/linux",
+            "toolchainFile": "${sourceDir}/cmake/toolchains/linux.toolchain.cmake"
+        },
+        {
+            "name": "esp32c6",
+            "displayName": "ESP32-C6",
+            "description": "Configure for ESP32-C6",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/esp32c6",
+            "toolchainFile": "${sourceDir}/cmake/toolchains/esp32c6.toolchain.cmake"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "linux",
+            "configurePreset": "linux"
+        },
+        {
+            "name": "esp32c6",
+            "configurePreset": "esp32c6"
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "linux",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "linux"
+                },
+                {
+                    "type": "build",
+                    "name": "linux"
+                }
+            ]
+        }
+    ]
+}

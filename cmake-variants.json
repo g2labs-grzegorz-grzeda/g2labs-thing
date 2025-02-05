@@ -1,0 +1,15 @@
+{
+    "buildType": {
+        "default": "debug",
+        "description": "Build type",
+        "choices": {
+            "debug": {
+                "short": "Debug",
+                "long": "Debug build",
+                "cmakeArgs": [
+                    "-DCMAKE_BUILD_TYPE=Debug"
+                ]
+            }
+        }
+    }
+}

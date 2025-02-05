@@ -20,14 +20,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-cmake_minimum_required(VERSION 3.31)
+# Set the compiler to GCC
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
 
-include("cmake/init.cmake")
+# Set the target system name
+set(CMAKE_SYSTEM_NAME Linux)
 
-project(g2labs-thing)
-g2l_thing_init()
+# Set the architecture
+set(CMAKE_SYSTEM_PROCESSOR x86_64)
 
-add_executable(${PROJECT_NAME})
-g2l_thing_build_executable(${PROJECT_NAME})
+# Set the path to the toolchain
+set(CMAKE_FIND_ROOT_PATH /usr/local/gcc)
 
-add_subdirectory(src)
+# Set the search paths for the compiler
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+set(G2L_PLATFORM "linux" CACHE STRING "Platform name" FORCE)
+set(G2L_PLATFORM_FLAVOR "" CACHE STRING "Platform flavor" FORCE)

@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include <stdio.h>
+#ifndef ENTRY_H
+#define ENTRY_H
 
-int application_main(int argc, char** argv) {
-    printf("Hello, World!\n");
-    return 0;
-}
+extern int application_main(int argc, char** argv);
+
+#endif  // ENTRY_H

@@ -20,14 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-cmake_minimum_required(VERSION 3.31)
+# Set the path to the ESP-IDF toolchain file
+set(ESP_IDF_TOOLCHAIN_FILE "$ENV{IDF_PATH}/tools/cmake/toolchain-esp32c6.cmake")
 
-include("cmake/init.cmake")
+# Include the ESP-IDF toolchain file
+include(${ESP_IDF_TOOLCHAIN_FILE})
 
-project(g2labs-thing)
-g2l_thing_init()
-
-add_executable(${PROJECT_NAME})
-g2l_thing_build_executable(${PROJECT_NAME})
-
-add_subdirectory(src)
+set(G2L_PLATFORM "esp32" CACHE STRING "Platform name" FORCE)
+set(G2L_PLATFORM_FLAVOR "c6" CACHE STRING "Platform flavor" FORCE)
+set(ESP_TARGET "esp32c6" CACHE STRING "ESP32-C6 target" FORCE)

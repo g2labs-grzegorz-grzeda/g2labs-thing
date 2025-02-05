@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
+add_subdirectory(entry)
+
 target_sources(${PROJECT_NAME}
     PRIVATE main.c
 )

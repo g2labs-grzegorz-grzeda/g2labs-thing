@@ -1,0 +1,12 @@
+function(g2l_thing_init)
+    message(STATUS "-------------- G2Labs --------------")
+    message(STATUS "G2Labs Thing firmware build system")
+    message(STATUS "Target platform: ${G2L_PLATFORM}")
+    message(STATUS "Target platform flavor: ${G2L_PLATFORM_FLAVOR}")
+    message(STATUS "-------------- G2Labs --------------")
+    include(${CMAKE_CURRENT_LIST_DIR}/cmake/platforms/init.${G2L_PLATFORM}${G2L_PLATFORM_FLAVOR}.cmake)
+endfunction()
+
+function(g2l_thing_build_executable executable)
+    g2l_thing_platform_build_executable(${executable})
+endfunction(g2l_thing_build_executable)

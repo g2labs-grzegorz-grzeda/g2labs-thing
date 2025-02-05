@@ -21,9 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include <stdio.h>
+#include "entry.h"
 
-int application_main(int argc, char** argv) {
-    printf("Hello, World!\n");
-    return 0;
+int main(int argc, char** argv) {
+    return application_main(argc, argv);
 }

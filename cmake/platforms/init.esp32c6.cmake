@@ -20,14 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-cmake_minimum_required(VERSION 3.31)
+include($ENV{IDF_PATH}/tools/cmake/idf.cmake)
 
-include("cmake/init.cmake")
+function(g2l_thing_platform_build_executable executable)
+    idf_build_process("${ESP_TARGET}"
+        COMPONENTS
+        freertos
+        esptool_py
+        vfs
+        spiffs
+        driver
+        esp_wifi
+        nvs_flash
+        mqtt
 
-project(g2labs-thing)
-g2l_thing_init()
+        # SDKCONFIG_DEFAULTS ${ESP32_SDKCONFIG_FILES}
+        SDKCONFIG ${CMAKE_BINARY_DIR}/sdkconfig
+    )
+    set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+    target_link_libraries(${executable} PRIVATE idf::freertos idf::esp_common)
 
-add_executable(${PROJECT_NAME})
-g2l_thing_build_executable(${PROJECT_NAME})
-
-add_subdirectory(src)
+    idf_build_executable(${executable})
+endfunction()
