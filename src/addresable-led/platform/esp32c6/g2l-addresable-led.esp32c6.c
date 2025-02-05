@@ -21,7 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include <stdio.h>
+#include <stddef.h>
+#include <stdint.h>
+#include "driver/rmt_tx.h"
 #include "g2l-addresable-led-platform.h"
 
 g2l_addresable_led_platform_t* g2l_addresable_led_platform_create(

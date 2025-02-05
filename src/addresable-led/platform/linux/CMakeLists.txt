@@ -20,8 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-g2l_thing_add_source_platform_dependent_directory(${CMAKE_CURRENT_SOURCE_DIR})
-
-target_include_directories(${PROJECT_NAME}
-    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
+target_sources(${PROJECT_NAME}
+    PRIVATE g2l-addresable-led.linux.c
 )
