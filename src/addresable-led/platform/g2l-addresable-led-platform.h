@@ -35,7 +35,6 @@ typedef struct g2l_addresable_led_platform_configuration {
 } g2l_addresable_led_platform_configuration_t;
 
 typedef struct g2l_addresable_led_platform {
-    void* platform_specific;
     uint8_t* data;
     size_t len;
     int led_count;

@@ -23,19 +23,33 @@
  */
 #include <stdio.h>
 #include "g2l-addresable-led.h"
+#include "g2l-delay.h"
 
 int application_main(int argc, char** argv) {
     printf("Hello, World!\n");
     g2l_addresable_led_configuration_t config = {
-        .gpio = 0,
-        .led_count = 10,
+        .gpio = 8,
+        .led_count = 1,
     };
     g2l_addresable_led_t* led = g2l_addresable_led_create(&config);
     if (!led) {
         return -1;
     }
-    g2l_addresable_led_set_all(led, 255, 0, 0);
-    g2l_addresable_led_update(led);
-    g2l_addresable_led_destroy(led);
+
+    while (1) {
+        g2l_delay_ms(500);
+        g2l_addresable_led_set_all(led, 0, 50, 0);
+        g2l_addresable_led_update(led);
+        g2l_delay_ms(500);
+        g2l_addresable_led_set_all(led, 50, 0, 0);
+        g2l_addresable_led_update(led);
+        g2l_delay_ms(500);
+        g2l_addresable_led_set_all(led, 0, 0, 50);
+        g2l_addresable_led_update(led);
+        g2l_delay_ms(500);
+        g2l_addresable_led_set_all(led, 0, 0, 0);
+        g2l_addresable_led_update(led);
+    }
+
     return 0;
 }

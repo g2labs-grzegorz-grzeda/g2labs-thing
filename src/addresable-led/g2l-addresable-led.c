@@ -23,8 +23,12 @@
  */
 
 #include "g2l-addresable-led.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include "g2l-addresable-led-platform.h"
+
+#define I(x) printf("[I] " x "\n")
+#define E(x) printf("[E] " x "\n")
 
 typedef struct g2l_addresable_led {
     g2l_addresable_led_platform_t* platform;
@@ -35,11 +39,13 @@ static g2l_addresable_led_t* addressable_led = NULL;
 g2l_addresable_led_t* g2l_addresable_led_create(
     g2l_addresable_led_configuration_t* config) {
     if (addressable_led || !config || config->led_count <= 0) {
+        E("Invalid configuration");
         return NULL;
     }
     addressable_led =
         (g2l_addresable_led_t*)calloc(1, sizeof(g2l_addresable_led_t));
     if (!addressable_led) {
+        E("Failed to allocate memory");
         return NULL;
     }
 
@@ -52,6 +58,7 @@ g2l_addresable_led_t* g2l_addresable_led_create(
     addressable_led->platform =
         g2l_addresable_led_platform_create(&platform_config);
     if (!addressable_led->platform) {
+        E("Failed to create platform");
         free(addressable_led);
         addressable_led = NULL;
         return NULL;
@@ -82,9 +89,11 @@ void g2l_addresable_led_set_all(g2l_addresable_led_t* led,
         return;
     }
     int entries_count = led->platform->led_count * 3;
-    for (int i = 0; i < entries_count; i++) {
-        led->platform->data[i] = r;
-        led->platform->data[i + 1] = g;
+
+    for (int i = 0; i < entries_count; i += 3) {
+        // printf("Setting color (%d, %d, %d) for led %d\n", r, g, b, i);
+        led->platform->data[i + 1] = r;
+        led->platform->data[i + 0] = g;
         led->platform->data[i + 2] = b;
     }
 }
