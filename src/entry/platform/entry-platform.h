@@ -21,8 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include "entry.h"
+#ifndef ENTRY_PLATFORM_H
+#define ENTRY_PLATFORM_H
 
-int main(int argc, char** argv) {
-    return application_main(argc, argv);
-}
+extern int entry_main(int argc, char** argv);
+
+#endif  // ENTRY_PLATFORM_H

@@ -10,3 +10,13 @@ endfunction()
 function(g2l_thing_build_executable executable)
     g2l_thing_platform_build_executable(${executable})
 endfunction(g2l_thing_build_executable)
+
+function(g2l_thing_add_source_platform_dependent project source_prefix)
+    set(source_file ${CMAKE_CURRENT_SOURCE_DIR}/${source_prefix}.${G2L_PLATFORM}${G2L_PLATFORM_FLAVOR}.c)
+
+    if(EXISTS ${source_file})
+        target_sources(${project} PRIVATE ${source_file})
+    else()
+        message(FATAL_ERROR "Source file ${source_file} does not exist")
+    endif()
+endfunction(g2l_thing_add_source_platform_dependent)

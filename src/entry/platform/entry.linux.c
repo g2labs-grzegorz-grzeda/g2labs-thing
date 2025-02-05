@@ -21,15 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include "entry.h"
-#include <esp_log.h>
-#include <stddef.h>
+#include "entry-platform.h"
 
-static const char* TAG = "entry";
-
-int app_main(void) {
-    ESP_LOGI(TAG, "Starting application");
-    int return_code = application_main(0, NULL);
-    ESP_LOGI(TAG, "Application finished with code %d", return_code);
-    return return_code;
+int main(int argc, char** argv) {
+    return entry_main(argc, argv);
 }

@@ -20,7 +20,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_sources(${PROJECT_NAME} PRIVATE entry.c)
-
-add_subdirectory(platform)
+g2l_thing_add_source_platform_dependent(${PROJECT_NAME} entry)
