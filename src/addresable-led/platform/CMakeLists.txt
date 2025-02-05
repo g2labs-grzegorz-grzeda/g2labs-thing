@@ -20,9 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-add_subdirectory(entry)
-add_subdirectory(addresable-led)
+g2l_thing_add_source_platform_dependent(${PROJECT_NAME} g2l-addresable-led)
 
-target_sources(${PROJECT_NAME}
-    PRIVATE main.c
+target_include_directories(${PROJECT_NAME}
+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 )

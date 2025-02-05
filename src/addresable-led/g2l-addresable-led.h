@@ -21,21 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include <stdio.h>
-#include "g2l-addresable-led.h"
+typedef enum {
+    G2L_ADDRESABLE_LED_WS2812 = 0,
+} g2l_addresable_led_type_t;
 
-int application_main(int argc, char** argv) {
-    printf("Hello, World!\n");
-    g2l_addresable_led_configuration_t config = {
-        .gpio = 0,
-        .led_count = 10,
-    };
-    g2l_addresable_led_t* led = g2l_addresable_led_create(&config);
-    if (!led) {
-        return -1;
-    }
-    g2l_addresable_led_set_all(led, 255, 0, 0);
-    g2l_addresable_led_update(led);
-    g2l_addresable_led_destroy(led);
-    return 0;
-}
+typedef struct g2l_addresable_led g2l_addresable_led_t;
+
+typedef struct g2l_addresable_led_configuration {
+    int gpio;
+    int led_count;
+} g2l_addresable_led_configuration_t;
+
+g2l_addresable_led_t* g2l_addresable_led_create(
+    g2l_addresable_led_configuration_t* config);
+
+void g2l_addresable_led_set_color(g2l_addresable_led_t* led,
+                                  int index,
+                                  int r,
+                                  int g,
+                                  int b);
+
+void g2l_addresable_led_set_all(g2l_addresable_led_t* led, int r, int g, int b);
+
+void g2l_addresable_led_update(g2l_addresable_led_t* led);
+
+void g2l_addresable_led_destroy(g2l_addresable_led_t* led);

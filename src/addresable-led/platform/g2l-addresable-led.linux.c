@@ -22,20 +22,20 @@
  * SOFTWARE.
  */
 #include <stdio.h>
-#include "g2l-addresable-led.h"
+#include "g2l-addresable-led-platform.h"
 
-int application_main(int argc, char** argv) {
-    printf("Hello, World!\n");
-    g2l_addresable_led_configuration_t config = {
-        .gpio = 0,
-        .led_count = 10,
-    };
-    g2l_addresable_led_t* led = g2l_addresable_led_create(&config);
-    if (!led) {
-        return -1;
-    }
-    g2l_addresable_led_set_all(led, 255, 0, 0);
-    g2l_addresable_led_update(led);
-    g2l_addresable_led_destroy(led);
-    return 0;
+g2l_addresable_led_platform_t* g2l_addresable_led_platform_create(
+    g2l_addresable_led_platform_configuration_t* config) {
+    printf("<g2l_addresable_led_platform:LINUX " __FILE__
+           ":%d> NOT IMPLEMENTED\n",
+           __LINE__);
+    return NULL;
+}
+
+void g2l_addresable_led_platform_update(g2l_addresable_led_platform_t* led) {
+    printf("<g2l_addresable_led_platform:LINUX> NOT IMPLEMENTED\n");
+}
+
+void g2l_addresable_led_platform_destroy(g2l_addresable_led_platform_t* led) {
+    printf("<g2l_addresable_led_platform:LINUX> NOT IMPLEMENTED\n");
 }
